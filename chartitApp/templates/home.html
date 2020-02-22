@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <style type="text/css">
+  	{% load static %}
+  	body{background-image: url({% static 'images/nybj.png' %});background-size:100% 100%;font-weight:bold;font-family:苹方;overflow: hidden;}
+  	.main{width:1450px;height:768px;position:relative;margin:auto;}
+	div{border:0px solid white;margin:1px;}
+	.layer{position:relative;width:100%;}
+	#layer01{}
+	#layer01 img{text-align: center;display: block;height: 35px;padding-top: 35px;margin: auto;}
+	#layer02 > div{height:100%;float:left;position:relative;}
+	.layer02-data{position: absolute;width: auto;height: 100px;color: white;top: 45px;left: 60px;}
+	.layer03-panel{height:100%;position:relative;float:left;}
+	.layer03-left-label{position:absolute;}
+	#layer03_left_label01{top:10px;left:10px;color:white;height:20px;width:200px;font-weight: bold;}
+	#layer03_left_label02{right:10px;top:10px;color:#036769;height:20px;width:200px;}
+	.layer03-left-chart{position:relative;float:left;height:100%;}
+	#layer03_right_label{position:absolute;top:10px;left:10px;color:white;height:20px;width:400px;}
+	.layer03-right-chart{position:relative;float:left;height:100%;width:22%;}
+	.layer03-right-chart-label{color: white;text-align: center;position: absolute;bottom: 60px;width: 100%;}
+	.layer04-panel{position:relative;float:left;height:100%;width:48%;}
+	.layer04-panel-label{width:100%;height:15%;color:white;padding-top:5px;}
+	.layer04-panel-chart{width:100%;height:85%;}
+
+	ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+a{
+    margin: 0;
+    text-align: left;
+    padding: 12px 15px 12px 15px;
+    background: #5F6975;
+    color: white;
+    display: block;
+    text-decoration: none;
+}
+.mainMenu>li{
+    display: inline-block;
+    margin-left: -5px;
+}
+li:hover>a{
+    background: #4B545F;
+    cursor: pointer;
+}
+.subMenu{
+    position: absolute;
+    display: none;
+}
+.subMenu li{
+    border-top: 1px solid #575F6A;
+    border-bottom: 1px solid #6B727C;
+    position: relative;
+}
+.mainMenu>li:hover .subMenu{
+    display: block;
+}
+.SuperSubMenu{
+    position: absolute;
+    top: 0;
+    right: 0;
+    -ms-transform: translate(100%,0);
+    -webkit-transform: translate(100%,0);
+    transform:translate(100%,0);
+    display: none;
+}
+.subMenu li:hover>.SuperSubMenu{
+    display: block;
+}
+
+
+	
+  </style>
+  <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+  <script src="https://cdn.bootcss.com/echarts/4.1.0.rc2/echarts.min.js"></script>
+  {% load static %}
+  <script src="{% static 'monitor.js' %}"></script>
+ <script type="text/javascript">
+	$(function(){
+		drawLayer02Label($("#layer02_01 canvas").get(0),"Current Sales",90,200);
+		drawLayer02Label($("#layer02_02 canvas").get(0),"Total Shipping",90,300);
+		drawLayer02Label($("#layer02_03 canvas").get(0),"Unfinished Sales Order",70,200);
+		drawLayer02Label($("#layer02_04 canvas").get(0),"Account Receivable",53,200);
+		drawLayer02Label($("#layer02_05 canvas").get(0),"Total Cost",95,200);
+		drawLayer02Label($("#layer02_06 canvas").get(0),"Important Agenda",83,200);
+		
+		renderLegend();
+
+		//Pie Chart
+		renderChartBar01();
+		//renderChartBar02();
+
+		//Storage
+		renderLayer03Right();
+
+		//30day net cash flow Variation
+		renderLayer04Left();
+
+		//Sales Amount
+		renderLayer04Right();
+	});
+
+  </script>
+  <title>Aluminum Shapes Graphics</title>
+ </head>
+ <body>
+	 <div class="main">
+		<div id="layer02" class="layer" style="height:15%;">
+			<div id="layer02_01" style="width:20%;">
+				<div class="layer02-data">
+					<span style="font-size:26px;"></span>
+					<span style="font-size:12px;">USD</span>	
+				</div>
+				<canvas width="200" height="100"></canvas>
+			</div>
+			<div id="layer02_02" style="width:20%;">
+				<div class="layer02-data">
+					<span style="font-size:26px;"></span>
+					<span style="font-size:12px;">LBS</span>
+					<!--
+					<input type="button" onclick="location.href='InventoryEachMonth';" value="view" />
+				-->
+				</div>
+				<canvas width="200" height="100"></canvas>
+			</div>
+			<div id="layer02_03" style="width:20%;">
+				<div class="layer02-data">
+					<span style="font-size:26px;"></span>
+					<span style="font-size:12px;"></span>
+					<!--
+					<input type="button" onclick="location.href='InventoryEachMonth';" value="view" />
+				-->
+				</div>
+				<canvas width="200" height="100"></canvas>
+			</div>
+			<div id="layer02_04" style="width:13%;">
+				<div class="layer02-data">
+					<span style="font-size:26px;"></span>
+					<span style="font-size:12px;">USD</span>
+					<!--
+
+
+
+					-->
+				</div>
+				<canvas width="165" height="100"></canvas>
+			</div>
+			<div id="layer02_05" style="width:13%;">
+				<div class="layer02-data">
+					<span style="font-size:26px;"></span>
+					<span style="font-size:12px;">USD</span>
+
+			                
+				
+				</div>
+				<canvas width="200" height="100"></canvas>
+			</div>
+			<div id="layer02_06" style="width:13%;">
+				<div class="layer02-data">
+					<span style="font-size:26px;">5</span>
+					<span style="font-size:12px;"></span>
+				</div>
+				<canvas width="200" height="100"></canvas>
+			</div>
+		</div>
+
+		<div div id="layer05" class="layer" style="z-index: 10">
+			<nav>
+			            <ul class="mainMenu">
+			            	<li><a>Foundry</a>
+			                        
+			                            <ul class="subMenu">
+			                            	<li><a>Monthly Sum</a>
+			                            		<ul class="SuperSubMenu">
+			                                		<li><a href="FoundryoneMonth">2019</a></li>
+			                                		<li><a href="FoundrytwoMonth">2018</a></li>
+			                                		<li><a href="FoundrythreeMonth">2017</a></li>
+			                                		<li><a href="FoundryallMonth">2017~2019</a></li>
+			                                		<li><a href="FoundrycompareMonth">2017/2018/2019</a></li>
+			                                	</ul>
+			                                </li>
+			                                <!--
+			                                <li><a href="">Vendor Total</a>
+			                                	<ul class="SuperSubMenu">
+			                                		<li><a href="">Annual Sum</a>
+			                                			<ul class="SuperSubMenu">
+			                                				<li><a href="FoundryoneVendor">2019</a></li>
+			                                				<li><a href="FoundrytwoVendor">2018</a></li>
+			                                				<li><a href="FoundrythreeVendor">2017</a></li>
+			                                			</ul>
+			                                		</li>
+			                                		<li><a href="">Top3 Monthly</a>
+			                                			<ul class="SuperSubMenu">
+			                                				<li><a href="FoundryonetopVendor">2019</a></li>
+			                                				<li><a href="FoundrytwotopVendor">2018</a></li>
+			                                				<li><a href="FoundrythreetopVendor">2017</a></li>
+			                                			</ul>
+			                                		</li>
+			                                		
+			                                	</ul>
+			                                </li>
+			                            -->
+			                            	<li><a>Maintenance</a>
+			                            		<ul class="SuperSubMenu">
+			                                		<li><a href="FoundrymainCompare">2017/2018/2019</a></li>
+			                                		<li><a href="FoundrymainAll">Total Each Month</a></li>
+			                                		<li><a href="FoundrymainMini">Total Each Year</a></li>
+			                                	</ul>
+			                                </li>
+
+
+
+
+			                                <li><a>Item</a>
+			                                	<ul class="SuperSubMenu">
+			                                		<li><a>Annual Sum</a>
+			                                			<ul class="SuperSubMenu">
+			                                				<li><a>Including Metal</a>
+			                                					<ul class="SuperSubMenu">
+			                                						<li><a href="FoundryoneItem">2019</a></li>
+			                                						<li><a href="FoundrytwoItem">2018</a></li>
+			                                						<li><a href="FoundrythreeItem">2017</a></li>
+			                                					</ul>
+			                                				</li>
+			                                				<li><a>Excluding Metal</a>
+			                                					<ul class="SuperSubMenu">
+			                                						<li><a href="FoundryoneExpense">2019</a></li>
+			                                						<li><a href="FoundrytwoExpense">2018</a></li>
+			                                						<li><a href="FoundrythreeExpense">2017</a></li>
+			                                					</ul>
+			                                				</li>
+			                                			</ul>
+			                                		</li>
+			                                		<li><a>Top 3 Items</a>
+			                                			<ul class="SuperSubMenu">
+			                                				<li><a href="FoundryonetopItem">2019</a></li>
+			                                				<li><a href="FoundrytwotopItem">2018</a></li>
+			                                				<li><a href="FoundrythreetopItem">2017</a></li>
+			                                				<li><a href="FoundryalltopItem">2017~2019</a></li>
+			                                			</ul>
+			                                		</li>
+			                                		<li><a>2017/2018/2019</a>
+			                                			<ul class="SuperSubMenu">
+			                                				<li><a href="FoundrycompareScrap">Aluminum Scrap</a></li>
+			                                				<li><a href="FoundrycomparePrime">Prime Aluminum</a></li>
+			                                				<li><a href="FoundrycompareLog">Logs and Billets</a></li>
+			                                			</ul>
+			                                		</li>
+			                                	</ul>
+			                                </li>
+			                                <li><a>Customize</a></li>
+			                            </ul>
+			                        
+			                </li>
+
+			                <li><a>Unfinished Sales Order</a>
+			                    <ul class="subMenu">
+			                        <li><a href="OrderRep">Sales Representative</a></li>
+			                        <li><a href="OrderCustomer">Customer Total</a></li>
+			                        <li><a href="OrderDate">Monthly sum</a></li>
+			                        <li><a>Press</a>
+			                        
+			                            <ul class="SuperSubMenu">
+			                                <li><a href="OrderBl">BL</a></li>
+			                                <li><a href="OrderCl">CL</a></li>
+			                                <li><a href="OrderDa">DA</a></li>
+			                                <li><a href="OrderS1">S1</a></li>
+			                                <li><a href="OrderS2">S2</a></li>
+			                                <li><a href="OrderS3">S3</a></li>
+			                                <li><a href="OrderS4">S4</a></li>
+			                            </ul>
+			                        
+			                        </li>
+			                    </ul>
+			                </li>
+
+			                <li><a>Sales Report</a>
+			                    <ul class="subMenu">
+			                    	<li><a>Department Revenue</a>
+			                        	<ul class="SuperSubMenu">
+			                        		<li><a>Main Department</a>
+			                        			<ul class="SuperSubMenu">
+			                        				<li><a href="SalesextrusionDep">Extrusion</a></li>
+			                        				<li><a href="SalesfabricationDep">Fabrication</a></li>
+			                        				<li><a href="SalesanodizingDep">Anodizing</a></li>
+			                        			</ul>
+			                        		<li><a>Date</a>
+			                        			<ul class="SuperSubMenu">
+			                        				<li><a href="SalesoneDep">2019</a></li>
+			                        				<li><a href="SalestwoDep">2018</a></li>
+			                        				<li><a href="SalesthreeDep">2017</a></li>
+			                        				<li><a href="SalesallDep">2017~2019</a></li>
+			                        			</ul>
+			                        		</li>
+			                        	</ul>
+			                        </li>			                    	
+			                        
+			                        <li><a>Press</a>
+			                            <ul class="SuperSubMenu">
+			                                <li><a>BL</a>
+			                                	<ul class="SuperSubMenu">
+			                                		<li><a href="SalesoneBl">2019</a></li>
+			                                		<li><a href="SalestwoBl">2018</a></li>
+			                                		<li><a href="SalesthreeBl">2017</a></li>
+			                                		<li><a href="SalesallBl">2017~2019</a></li>
+			                                		<li><a href="SalescompareBl">2017/2018/2019</a></li>
+			                                	</ul>
+			                                </li>
+			                                <li><a>CL</a>
+			                                	<ul class="SuperSubMenu">
+			                                		<li><a href="SalesoneCl">2019</a></li>
+			                                		<li><a href="SalestwoCl">2018</a></li>
+			                                		<li><a href="SalesthreeCl">2017</a></li>
+			                                		<li><a href="SalesallCl">2017~2019</a></li>
+			                                		<li><a href="SalescompareCl">2017/2018/2019</a></li>
+			                                	</ul>
+			                                </li>
+			                                <li><a>DA</a>
+			                                	<ul class="SuperSubMenu">
+			                                		<li><a href="SalesoneDa">2019</a></li>
+			                                		<li><a href="SalestwoDa">2018</a></li>
+			                                		<li><a href="SalesthreeDa">2017</a></li>
+			                                		<li><a href="SalesallDa">2017~2019</a></li>
+			                                		<li><a href="SalescompareDa">2017/2018/2019</a></li>
+			                                	</ul>
+			                                </li>
+			                                <li><a>S1</a>
+			                                	<ul class="SuperSubMenu">
+			                                		<li><a href="SalesoneS1">2019</a></li>
+			                                		<li><a href="SalestwoS1">2018</a></li>
+			                                		<li><a href="SalesthreeS1">2017</a></li>
+			                                		<li><a href="SalesallS1">2017~2019</a></li>
+			                                		<li><a href="SalescompareS1">2017/2018/2019</a></li>
+			                                	</ul>
+			                                </li>
+			                                <li><a>S2</a>
+			                                	<ul class="SuperSubMenu">
+			                                		<li><a href="SalesoneS2">2019</a></li>
+			                                		<li><a href="SalestwoS2">2018</a></li>
+			                                		<li><a href="SalesthreeS2">2017</a></li>
+			                                		<li><a href="SalesallS2">2017~2019</a></li>
+			                                		<li><a href="SalescompareS2">2017/2018/2019</a></li>
+			                                	</ul>
+			                                </li>
+			                                <li><a>S3</a>
+			                                	<ul class="SuperSubMenu">
+			                                		<li><a href="SalesoneS3">2019</a></li>
+			                                		<li><a href="SalestwoS3">2018</a></li>
+			                                		<li><a href="SalesthreeS3">2017</a></li>
+			                                		<li><a href="SalesallS3">2017~2019</a></li>
+			                                		<li><a href="SalescompareS3">2017/2018/2019</a></li>
+			                                	</ul>
+			                                </li>
+			                                <li><a>S4</a>
+			                                	<ul class="SuperSubMenu">
+			                                		<li><a href="SalesoneS4">2019</a></li>
+			                                		<li><a href="SalestwoS4">2018</a></li>
+			                                		<li><a href="SalesthreeS4">2017</a></li>
+			                                		<li><a href="SalesallS4">2017~2019</a></li>
+			                                		<li><a href="SalescompareS4">2017/2018/2019</a></li>
+			                                	</ul>
+			                                </li>
+			                            </ul>
+			                        
+			                        </li>
+
+			                        <li><a>Sales Representative</a>
+			                        	<ul class="SuperSubMenu">
+			                        		<li><a href="SalesoneRep">2019</a></li>
+			                        		<li><a href="SalestwoRep">2018</a></li>
+			                        		<li><a href="SalesthreeRep">2017</a></li>
+			                        		<!--
+			                        		<li><a href="">Top Salesman</a></li>-->
+			                        	</ul>
+			                        </li>
+			                        <li><a>Customer</a>
+			                        	<ul class="SuperSubMenu">
+			                        		<li><a href="SalesoneCustomer">2019</a></li>
+			                        		<li><a href="SalestwoCustomer">2018</a></li>
+			                        		<li><a href="SalesthreeCustomer">2017</a></li>
+			                        		<!--
+			                        		<li><a href="">Top Customer</a></li>-->
+			                        	</ul>
+			                        </li>
+			                        <li><a>Monthly Sum</a>
+			                        	<ul class="SuperSubMenu">
+			                        		<li><a href="SalesoneMonth">2019</a></li>
+			                        		<li><a href="SalestwoMonth">2018</a></li>
+			                        		<li><a href="SalesthreeMonth">2017</a></li>
+			                        		<li><a href="SalesallMonth">2017~2019</a></li>
+			                        	</ul>
+			                        </li>
+
+			                        
+			                    </ul>
+			                
+			                </li>
+
+			                <li><a>Department Cost</a>
+			                    <ul class="subMenu">
+			                    	<li><a>Overall</a>
+			                    		<ul class="SuperSubMenu">
+			                    			<li><a href="OveralloneDep">2019</a></li>
+			                    			<li><a href="OveralltwoDep">2018</a></li>
+			                    			<li><a href="OverallthreeDep">2017</a></li>
+			                    		</ul>
+			                    	</li>
+			               
+			                        <li><a>Capital Expense and Misc</a></li>
+			                        <li><a>Extrusion</a>
+			                        	<ul class="SuperSubMenu">
+			                            	<li><a>Monthly Sum</a>
+			                            		<ul class="SuperSubMenu">
+			                                		<li><a href="ExtrusiononeMonth">2019</a></li>
+			                                		<li><a href="ExtrusiontwoMonth">2018</a></li>
+			                                		<li><a href="ExtrusionthreeMonth">2017</a></li>
+			                                		<li><a href="ExtrusionallMonth">2017~2019</a></li>
+			                                		<li><a href="ExtrusioncompareMonth">2017/2018/2019</a></li>
+			                                	</ul>
+			                                </li>
+			                                <!--
+			                                <li><a href="">Vendor Total</a>
+			                                	<ul class="SuperSubMenu">
+			                                		<li><a href="">Annual Sum</a>
+			                                			<ul class="SuperSubMenu">
+			                                				<li><a href="FoundryoneVendor">2019</a></li>
+			                                				<li><a href="FoundrytwoVendor">2018</a></li>
+			                                				<li><a href="FoundrythreeVendor">2017</a></li>
+			                                			</ul>
+			                                		</li>
+			                                		<li><a href="">Top3 Monthly</a>
+			                                			<ul class="SuperSubMenu">
+			                                				<li><a href="FoundryonetopVendor">2019</a></li>
+			                                				<li><a href="FoundrytwotopVendor">2018</a></li>
+			                                				<li><a href="FoundrythreetopVendor">2017</a></li>
+			                                			</ul>
+			                                		</li>
+			                                		
+			                                	</ul>
+			                                </li>
+			                            -->
+			                                <li><a>Item</a>
+			                                	<ul class="SuperSubMenu">
+			                                		<li><a>Annual Sum</a>
+			                                			<ul class="SuperSubMenu">
+			                                				<li><a href="ExtrusiononeItem">2019</a></li>
+			                                				<li><a href="ExtrusiontwoItem">2018</a></li>
+			                                				<li><a href="ExtrusionthreeItem">2017</a></li>
+			                                			</ul>
+			                                		</li>
+			                                		<li><a>Top 7 Items</a>
+			                                			<ul class="SuperSubMenu">
+			                                				<li><a href="ExtrusiononetopItem">2019</a></li>
+			                                				<li><a href="ExtrusiontwotopItem">2018</a></li>
+			                                				<li><a href="ExtrusionthreetopItem">2017</a></li>
+			                                				<li><a href="ExtrusionalltopItem">2017~2019</a></li>
+			                                			</ul>
+			                                		</li>
+			                                		<li><a>2017/2018/2019</a>
+			                                			<ul class="SuperSubMenu">
+			                                				<li><a href="ExtrusioncompareMain">Maintenance</a></li>
+			                                			</ul>
+			                                		</li>
+			                                	</ul>
+			                                </li>
+			                                <li><a>Customize</a></li>
+			                            </ul>
+			                        </li>
+			                        <li><a>General Plant</a></li>
+			                        <li><a>Anodizing</a></li>
+			                        <li><a>Shipping</a></li>
+			                        <li><a>Office</a></li>
+			                        <li><a>Outsourcing</a></li>
+			                        <li><a>Die Correction</a></li>
+			                        <li><a>Fabrication</a></li>
+			                        <li><a>Quality Control</a></li>
+			                    </ul>
+			                
+			                </li>
+
+			                <li><a>Monthly Forecast</a>
+			                    <ul class="subMenu">
+			                        <li><a>Labor Expense</a></li>
+			                        <li><a>Tax and Lease</a></li>
+			                        <li><a>Materials</a>
+			                        
+			                            <ul class="SuperSubMenu">
+			                                <li><a>Month</a></li>
+			                                <li><a>Customer</a></li>
+			                                <li><a>Item</a></li>
+			                                <li><a href="openorder">Customize</a></li>
+			                            </ul>
+			                        
+			                        </li>
+			                    </ul>
+			                
+			                </li>
+
+			            </ul>
+			</nav>
+
+		</div>
+
+		<div id="layer03" class="layer" style="height:40%;">
+			<div id="layer03_left" style="width:48%;" class="layer03-panel">
+				<div id="layer03_left_label01" class="layer03-left-label" style="z-index: 4">
+					Inventory
+					<input type="button" onclick="location.href='InventoryEachMonth';" value="Annual Summary" />
+				</div>
+				<!--
+				<div id="layer03_left_label02" class="layer03-left-label"> </div>
+				-->
+				<div id="layer03_left_01" class="layer03-left-chart" style="width:16%;">
+					<canvas width="200" height="200" style="margin:30px 0 0 20px;"></canvas>
+				</div>
+				
+				<div id="layer03_left_02" class="layer03-left-chart" style="width:80%;"></div>
+				<!--
+				<div id="layer03_left_03" class="layer03-left-chart" style="width:80%;"></div>
+				-->
+			</div>
+			<div id="layer03_right" style="width:50%;" class="layer03-panel">
+				<div id="layer03_right_label" style="z-index: 4">
+			          Order From Key Client Progress Chart
+				</div>
+
+				<div id="layer03_right_chart01" class="layer03-right-chart">
+					
+					<canvas width="130" height="150" style="margin:40px 0 0 20px;"></canvas>
+					<div class="layer03-right-chart-label">Wabash</div>
+				</div>
+				<div id="layer03_right_chart02" class="layer03-right-chart">
+					
+					<canvas width="130" height="150" style="margin:40px 0 0 20px;"></canvas>
+					<div class="layer03-right-chart-label">U-Haul</div>
+				</div>
+				<div id="layer03_right_chart03" class="layer03-right-chart">
+					
+					<canvas width="130" height="150" style="margin:40px 0 0 20px;"></canvas>
+					<div class="layer03-right-chart-label">Morgan</div>
+				</div>
+			</div>
+		</div>
+		<div id="layer04" class="layer" style="height:30%;">
+			<div id="layer04_left" class="layer04-panel">
+				<div id="layer04_left_label" class="layer04-panel-label">
+					30day net cash flow variation
+					<input type="button" onclick="location.href='MonthlyRevenue';" value="Annual Summary" />
+				</div>
+				<div id="layer04_left_chart" class="layer04-panel-chart"></div>
+			</div>
+			
+			<div id="layer04_right" class="layer04-panel">
+				<div id="layer04_right_label" class="layer04-panel-label">
+					<span>Sales Amount/</span><span style="color:#00A09A;">Past Week</span>
+					<input type="button" onclick="location.href='SalesEachMonth';" value="Annual Summary" />
+				</div>
+				<div id="layer04_right_chart" class="layer04-panel-chart"></div>
+			</div>
+		</div>
+	</div>
+ </body>
+</html>

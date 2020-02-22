@@ -1,0 +1,152 @@
+<html>
+<body>
+    <h1 style="text-align: center">Your Customized Budget Report</h1>
+<script>
+function AlFunction(){
+    var price=prompt("Please enter price per lbs for aluminum scrap","0.45");
+    document.getElementById("AlPrice").innerHTML = price;
+    if (price != null) {
+    alert("Your input is $" + price +"/lbs");
+    } else {
+    alert("You pressed cancel");
+    }
+}
+function MgFunction(){
+    var price=prompt("Please enter price per lbs for Magnesium alloy","2.10");
+    document.getElementById("MgPrice").innerHTML = price;
+    if (price != null) {
+    alert("Your input is $" + price +"/lbs");
+    } else {
+    alert("You pressed cancel");
+    }
+}
+function CuFunction(){
+    var price=prompt("Please enter price per lbs for Copper alloy","2.71");
+    document.getElementById("CuPrice").innerHTML = price;
+    if (price != null) {
+    alert("Your input is $" + price +"/lbs");
+    } else {
+    alert("You pressed cancel");
+    }
+}
+function TiFunction(){
+    var price=prompt("Please enter price per lbs for Titanium alloy","15.0");
+    document.getElementById("TiPrice").innerHTML = price;
+    if (price != null) {
+    alert("Your input is $" + price +"/lbs");
+    } else {
+    alert("You pressed cancel");
+    }
+}
+function AlloyCost(){
+}
+</script>
+<br /><br /><br />
+<table border="2">
+  <tr>
+    <th>Alloy Type</th>
+    <th>Order Weight</th>
+    <th>Billet/log Weight</th>
+    <th>Raw Materials Weight</th>
+    <th>Aluminum Scrap weight<button onclick="AlFunction()">Click me</button>$<span id="AlPrice"></span>&nbsp;&nbsp;/lbs</th>
+    <th>Magnesium weight<button onclick="MgFunction()">Click me</button>$<span id="MgPrice"></span>&nbsp;&nbsp;/lbs</th>
+    <th>Copper weight<button onclick="CuFunction()">Click me</button>$<span id="CuPrice"></span>&nbsp;&nbsp;/lbs</th>
+    <th>Titanium weight<button onclick="TiFunction()">Click me</button>$<span id="TiPrice"></span>&nbsp;&nbsp;/lbs</th>
+    <th>Materials Total Cost<button onclick="AlloyCost()">Click me</button><span id="AlloyCost"></span>&nbsp;&nbsp;</th>
+
+  </tr>
+  <tr>
+    <td>6005</td>
+    <td>20000</td>
+    <td><span id="">20000/0.6</span>&nbsp;&nbsp;lbs</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>6061</td>
+    <td>30000</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>6063</td>
+    <td>40000</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>6105</td>
+    <td>50000</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+</tr>
+<tr>
+    <td>61T6511</td>
+    <td>60000</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+</tr>
+</table>
+<h2 style="text-align: left;">Estimated Material Cost is: $0</h2>
+<br /><br /><br />
+<table border="2">
+    <tr>
+        <th>Estimated Date To Receive Cash</th>
+        <th>Customer Name</th>
+        <th>Customer Purchase Order Number</th> 
+        <th>Estimated Cash To Be Collected</th>
+    </tr>
+    <tr>
+        <td>2020-01-03</td>
+        <td></td>
+        <td></td> 
+        <td></td>
+    </tr>
+    <tr>
+        <td>2020-01-04</td>
+        <td></td>
+        <td></td> 
+        <td></td>
+    </tr>
+    <tr>
+        <td>2020-01-08</td>
+        <td></td>
+        <td></td> 
+        <td></td>
+    </tr>
+    <tr>
+        <td>2020-01-29</td>
+        <td></td>
+        <td></td> 
+        <td></td>
+    </tr>
+</table>
+<h2 style="text-align: left;">Estimated Revenue is: $0</h2>
+
+
+</body>
+</html>

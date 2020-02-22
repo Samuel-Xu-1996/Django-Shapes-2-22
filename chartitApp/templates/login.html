@@ -1,0 +1,25 @@
+<html>
+<head>
+<title>Login Form Validation</title>
+<!-- Include CSS File Here -->
+{% load static %}
+<link rel="stylesheet" href="{% static 'login/css/style.css' %}"/>
+<!-- Include JS File Here -->
+{% load static %}
+<script src="{% static 'login/js/login.js' %}"></script>
+</head>
+<body>
+<div class="container">
+<div class="main">
+<h2>Login Form Validation</h2>
+<form id="form_id" method="post" name="myform">
+<label>User Name :</label>
+<input type="text" name="username" id="username"/>
+<label>Password :</label>
+<input type="password" name="password" id="password"/>
+<input type="button" value="Login" id="submit" onclick="validate()"/>
+</form>
+</div>
+</div>
+</body>
+</html>
